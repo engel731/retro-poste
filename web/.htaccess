@@ -1,0 +1,9 @@
+# Redirect incoming URLs to index.php
+<IfModule mod_rewrite.c>
+	Options -MultiViews
+
+	RewriteBase /
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.*)$ bootstrap.php?app=Frontend [L]
+</IfModule>

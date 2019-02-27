@@ -1,0 +1,23 @@
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/engel731/OCFram"
+        }
+    ],
+    
+    "require": {
+        "engel/ocfram": "dev-master"
+    },
+
+	"autoload": {
+		"psr-0": {
+			"App\\": "",
+			
+            "Model\\": "src",
+			"Entity\\": "src",
+			"FormBuilder\\": "src",
+            "Widget\\": "src"
+		}
+	}
+}
