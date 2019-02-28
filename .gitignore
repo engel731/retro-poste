@@ -1,2 +1,3 @@
 /vendor
+/script/vendor
 composer.lock
