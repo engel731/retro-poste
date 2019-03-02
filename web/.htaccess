@@ -4,6 +4,8 @@
 
 	RewriteBase /
 	RewriteEngine On
+	RewriteRule ^services/ bootstrap.php?dir=Frontend&app=FrontendApi [L]
+	
 	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteRule ^(.*)$ bootstrap.php?app=Frontend [L]
+	RewriteRule ^(.*)$ bootstrap.php?dir=Frontend&app=FrontendApplication [L]
 </IfModule>
