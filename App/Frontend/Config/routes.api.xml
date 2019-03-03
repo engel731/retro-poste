@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
     <route method="GET" url="/services/picture" ressources="Picture" function=""></route>
-    <route method="GET" url="/services/picture/([0-9]+)" ressources="Picture" function="Show" vars="id"></route>
-    <route method="GET" url="/services/user([0-9]+)picture" ressources="Picture" function="UserShowPicture" vars="id"></route>
+    <route method="GET" url="/services/picture/([0-9]+)" ressources="Picture" function="Show" vars="idPicture"></route>
+    <route method="GET" url="/services/user/([0-9]+)/picture" ressources="Picture" function="UserShow" vars="idUser"></route>
+    <route method="GET" url="/services/album/([0-9]+)/picture" ressources="Picture" function="AlbumShow" vars="idAlbum"></route>
     
     <route method="GET" url="/services/user" ressources="User" function=""></route>
-    <route method="GET" url="/services/user([0-9]+)" ressources="User" function="Show" vars="id"></route>
+    <route method="GET" url="/services/user/([0-9]+)" ressources="User" function="Show" vars="idUser"></route>
+
+    <route method="GET" url="/services/album" ressources="Album" function=""></route>
+    <route method="GET" url="/services/album/([0-9]+)" ressources="Album" function="Show" vars="idAlbum"></route>
+    <route method="GET" url="/services/user/([0-9]+)/album" ressources="Album" function="UserShow" vars="idUser"></route>
 </routes>

@@ -1,5 +1,5 @@
 <?php
-namespace App\Frontend\Services;
+namespace App\Frontend\Ressources;
 
 use \OCFram\APIFram\Accessor;
 use \OCFram\HTTPRequest;
@@ -7,14 +7,10 @@ use \OCFram\HTTPRequest;
 class UserAccessor extends Accessor
 {
   public function GET_User(HTTPRequest $request) {
-    return array();
+    return array('user');
   }
 
-  public function GET_UserShow(HTTPRequest $request) {
-    return array( 'id_user' => $request->getData('id'));
-  }
-
-  public function GET_UserPicture(HTTPRequest $request) {
-    return array();
+  public function GET_ShowUser(HTTPRequest $request) {
+    return array( 'id_user' => $request->getData('idUser'));
   }
 }
