@@ -17,14 +17,14 @@ abstract class PicturesManager extends Manager
    * @param $user int L'identifiant de l'utilisateur possesseur des images à récupérer
    * @return array la liste des images. Chaque entrée est une instance de Picture.
    */
-  abstract public function getListUserImages($user);
+  abstract public function getListUserImages($debut = -1, $limite = -1);
 
   /**
    * Méthode retournant les images d'un album.
    * @param $album int L'identifiant d'un album contenant les images à récupérer
    * @return array la liste des images. Chaque entrée est une instance de Picture.
    */
-  abstract public function getListAlbumImages($album);
+  abstract public function getListAlbumImages($debut = -1, $limite = -1);
 
   /**
    * Méthode retournant une image précise.
