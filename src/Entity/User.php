@@ -60,11 +60,8 @@ class User extends Entity
   // GETTERS //
   
   public function id() { return $this->id; }
-  public function album() { return $this->album; }
-  public function possessor() { return $this->possessor; }
-  public function title() { return $this->title; }
-  public function resum() { return $this->resum; }
-  public function shaImg() { return $this->shaImg; }
-  public function extImg() { return $this->extImg; }
+  public function login() { return $this->login; }
+  public function pass() { return $this->pass; }
+  public function mail() { return $this->mail; }
   public function creationDate() { return $this->creationDate; }
 }

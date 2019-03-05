@@ -48,7 +48,7 @@ class Album extends Entity
 
   public function setChangeDate(\DateTime $dateEdit)
   {
-    $this->dateEdit = $dateEdit;
+    $this->changeDate = $dateEdit;
   }
  
   // GETTERS //

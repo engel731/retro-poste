@@ -6,12 +6,12 @@ use \OCFram\Entity;
 class Picture extends Entity
 {
   protected $id,
-            $album,
-            $possessor,
+            $id_album,
+            $id_possessor,
             $title,
             $resum,
-            $shaImg,
-            $extImg,
+            $sha,
+            $extension,
             $creationDate;
 
   const INVALID_TITLE = 1;
@@ -26,14 +26,14 @@ class Picture extends Entity
  
   // SETTERS //
   
-  public function setAlbum($album)
+  public function setId_album($id_album)
   {
-    $this->album = (int) $album;
+    $this->id_album = (int) $id_album;
   }
 
-  public function setPossessor($possessor)
+  public function setId_possessor($id_possessor)
   {
-    $this->possessor = (int) $possessor;
+    $this->id_possessor = (int) $id_possessor;
   }
  
   public function setTitle($title)
@@ -56,7 +56,7 @@ class Picture extends Entity
     $this->resum = $resum;
   }
 
-  public function setShaImg($sha)
+  public function setSha($sha)
   {
     if (!is_string($sha) || empty($sha))
     {
@@ -66,13 +66,13 @@ class Picture extends Entity
     $this->$sha = $sha;
   }
 
-  public function setExtImg($ext) {
-    if (!is_string($sha) || empty($sha))
+  public function setExtension($ext) {
+    if (!is_string($ext) || empty($ext))
     {
       $this->erreurs[] = self::INVALID_EXT_IMG;
     }
     
-    $this->extImg = $ext;
+    $this->extentsion = $ext;
   }
  
   public function setCreationDate(\DateTime $creationDate)
