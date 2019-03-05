@@ -1,6 +1,8 @@
 <?php
 namespace Model;
 
+use \OCFram\IResult;
+
 use \Entity\User;
  
 class UsersManagerPDO extends UsersManager
@@ -24,7 +26,7 @@ class UsersManagerPDO extends UsersManager
     }
 
     public function getList($debut = -1, $limite = -1) {
-        $sql = 'SELECT * FROM r_users WHERE';
+        $sql = 'SELECT * FROM r_users';
  
         if ($debut != -1 || $limite != -1)
         {
@@ -43,7 +45,7 @@ class UsersManagerPDO extends UsersManager
     
         $requete->closeCursor();
     
-        return $listeUsers;
+        return new IResult($listeUsers);
     }
 
     // Ecriture

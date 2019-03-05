@@ -2,12 +2,13 @@
 namespace Model;
  
 use \Entity\Album;
+use \OCFram\IResult;
 
 class AlbumsManagerPDO extends AlbumsManager
 {
   // Lecture
   
-  public function getListUserAlbums() {
+  public function getListUserAlbums($debut = -1, $limite = -1) {
     $sql = 'SELECT * FROM r_album WHERE book = '.$this->user->id();
  
     if ($debut != -1 || $limite != -1)
@@ -28,7 +29,7 @@ class AlbumsManagerPDO extends AlbumsManager
  
     $requete->closeCursor();
  
-    return $listeAlbum;
+    return new IResult($listeAlbum);
   }
 
   public function getUnique($id) {

@@ -1,6 +1,8 @@
 <?php
 namespace Model;
  
+use \OCFram\IResult;
+
 use \Entity\Picture;
 use \Entity\Album;
 use \Entity\User;
@@ -9,7 +11,7 @@ class PicturesManagerPDO extends PicturesManager
 {
   // Lecture
   
-  public function getListUserImages($user) {
+  public function getListUserImages($debut = -1, $limite = -1) {
     $sql = 'SELECT * FROM r_picture WHERE id_possessor = '.$this->user->id();
  
     if ($debut != -1 || $limite != -1)
@@ -24,15 +26,15 @@ class PicturesManagerPDO extends PicturesManager
  
     foreach ($listePictures as $picture)
     {
-        $picture->setCreationDate(new \DateTime($picture->creationDate()));
+      $picture->setCreationDate(new \DateTime($picture->creationDate()));
     }
  
     $requete->closeCursor();
  
-    return $listePictures;
+    return new IResult($listePictures);
   }
 
-  public function getListAlbumImages($album) {
+  public function getListAlbumImages($debut = -1, $limite = -1) {
     $sql = 'SELECT * FROM r_picture WHERE id_album = '.$this->album->id();
  
     if ($debut != -1 || $limite != -1)
@@ -52,7 +54,7 @@ class PicturesManagerPDO extends PicturesManager
  
     $requete->closeCursor();
  
-    return $listePictures;
+    return new IResult($listePictures);
   }
  
   public function getUnique($id) {
@@ -64,15 +66,15 @@ class PicturesManagerPDO extends PicturesManager
 
     if ($picture = $requete->fetch())
     {
-        $picture->setCreationDate(new \DateTime($picture->creationDate()));
-        return $picture;
+      $picture->setCreationDate(new \DateTime($picture->creationDate()));
+      return $picture;
     }
 
     return null;
   }
 
   public function getList($debut = -1, $limite = -1) {
-    $sql = 'SELECT * FROM r_picture WHERE';
+    $sql = 'SELECT * FROM r_picture';
  
     if ($debut != -1 || $limite != -1)
     {
@@ -91,7 +93,7 @@ class PicturesManagerPDO extends PicturesManager
 
     $requete->closeCursor();
 
-    return $listePictures;
+    return new IResult($listePictures);
   }
 
   // Ecriture
@@ -115,7 +117,7 @@ class PicturesManagerPDO extends PicturesManager
   }
 
   protected function add(Picture $picture) {
-    $requete = $this->dao->prepare('INSERT INTO r_picture SET id_album=:album, id_possessor=:possessor, title=:title, resum=:resum, sha=:sha, extension=:ext, creation-date = NOW()');
+    $requete = $this->dao->prepare('INSERT INTO r_picture SET id_album=:album, id_possessor=:possessor, title=:title, resum=:resum, sha=:sha, extension=:ext, creationDate = NOW()');
  
     $requete->bindValue(':album', $picture->album());
     $requete->bindValue(':possessor', $picture->possessor());
