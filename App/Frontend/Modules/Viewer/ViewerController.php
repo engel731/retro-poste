@@ -10,5 +10,10 @@ class ViewerController extends BackController
   {
     // On ajoute une définition pour le titre.
     $this->page->addVar('title', 'Index - Retro-Poste');
+    
+    $scripts[] = 'galerie';
+    //$scripts[] = 'dev/data.js';
+
+    $this->page->addVar('scripts', $scripts);
   }
 }
