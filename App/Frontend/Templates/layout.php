@@ -6,7 +6,20 @@
 		<meta name="viewport" content="width=device-width"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        
+        <!-- Chargement de la bibliothèque Vision.js -->
+		<script type="text/javascript" src="script/vendor/vision/utility-0.2.js"></script>
+		<script type="text/javascript" src="script/vendor/vision/webComponents-0.3.js"></script>
+		<script type="text/javascript" src="script/vendor/vision/widgets-0.1.js"></script>
+		<script type="text/javascript" src="script/vendor/vision/lazydata-0.3.js"></script>
+		<script type="text/javascript" src="script/vendor/vision/lazyload-0.2.js"></script>
+        <script type="text/javascript" src="script/vendor/vision/galerie-1.1.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+        <script type="text/javascript" src="script/vendor/Ajax.js"></script>
+        
+        <script type="text/javascript" src="script/drop-down.js"></script>
 	</head>
 
     <body>
@@ -22,28 +35,30 @@
                 
                 <a class="header__logo" href="#"><img src="imgs/logo.png" alt="Le logo de Retro-Poste" srcset="imgs/logo.svg"/></a>
 
-                <div class="search-bar">
-                    <input type="radio" id="open-filter" name="stay-filter" />
-                    <input checked type="radio" id="close-filter" name="stay-filter" />
-
-                    <label class="search-bar__btn filter__btn" for="open-filter"><span><i class="icon icon--filter"></i><i class="icon icon--caret-down"></i></span></label>
-                    <label class="search-bar__btn filter__btn" for="close-filter"><span><i class="icon icon--filter"></i><i class="icon icon--caret-down"></i></span></label>
-
-                    <form method="get" role="search">
-                        <input class="search-bar__input" type="search" name="term" aria-label="Recherche" placeholder="Tapez votre recherche ici" autocomplete="off">
-                        <button class="search-bar__btn" type="submit" title="Rechercher"><i class="icon icon--search"></i></button>
-
-                        <div class="dropdown filter__dropdown">	
-                            <ul class="dropdown__menus">
-                                <li><label class="dropdown__menus__item" for="Les voyages"><input checked type="checkbox" name="Les voyages" id="Les voyages">Toutes les categories</label></li>
-                                <li><label class="dropdown__menus__item" for="Les anciens metiers"><input type="checkbox" name="Les anciens metiers" id="Les anciens metiers">Les anciens metiers</label></li>
-                                <li><label class="dropdown__menus__item" for="La guerre"><input type="checkbox" name="La guerre" id="La guerre">Les vacance</label></li>
-                            </ul>
+                <div class="search drop-down">
+                    <form method="GET" role="search">
+                        <div class="search__bar">
+                            <label data-menu="filter" class="search__btn search__btn--filter drop-down__btn"><i class="icon icon--filter"></i><i class="icon icon--caret-down"></i></label>
+                            
+                            <input data-menu="suggestion" class="search__input" type="text" autocomplete="off"/>
+                            <button class="search__btn" type="submit" title="Rechercher"><i class="icon icon--search"></i></button>
+                        </div>
+                    
+                        <div class="drop-down__sub-list">
+                            <div class="drop-down__sub" id="filter">
+                                <div>Résultat 1</div>
+                                <div>Résultat 2</div>
+                            </div>
+                            
+                            <div class="drop-down__sub" id="suggestion"></div>
                         </div>
                     </form>
+
+                    <div class="login-register">
+                        <a href="#inscription">S'inscrire</a>
+                        <a href="#connexion">Se connecter</a>
+                    </div>
                 </div>
-                
-                <div class="login-register"><a href="#inscription">S'inscrire</a><a href="#connexion">Se connecter</a></div>
                 
                 <nav class="l-nav l-nav--secondary nav">
                     <a class="nav__close"></a>
@@ -74,13 +89,13 @@
                 Tous droits réservés - 2018 - Bazire Tanguy, <a href="#">Condition général d'utilisation</a>, <a href="#">Mention Légales</a>
             </footer>
 		</div>
-
-        <!-- Chargement de la bibliothèque Vision.js -->
-		<script type="text/javascript" src="script/vendor/vision/utility-0.2.js"></script>
-		<script type="text/javascript" src="script/vendor/vision/webComponents-0.3.js"></script>
-		<script type="text/javascript" src="script/vendor/vision/widgets-0.1.js"></script>
-		<script type="text/javascript" src="script/vendor/vision/lazydata-0.3.js"></script>
-		<script type="text/javascript" src="script/vendor/vision/lazyload-0.2.js"></script>
-		<script type="text/javascript" src="script/vendor/vision/galerie-1.1.js"></script>
+        
+        <script type="text/javascript" src="script/search.js"></script>
+        
+        <?php if(isset($scripts)) : ?>
+            <?php foreach ($scripts as $script) : ?>
+                <script type="text/javascript" src="script/<?= $script ?>.js"></script>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </body>
 </html>
