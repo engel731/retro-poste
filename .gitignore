@@ -1,3 +1,4 @@
 /vendor
-/script/vendor
+/web/script/vendor
 composer.lock
+/web/imgs/uploads

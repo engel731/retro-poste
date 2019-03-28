@@ -13,6 +13,20 @@ abstract class PicturesManager extends Manager
   protected $user;
 
   /**
+   * Méthode retournant les images d'un mot clé rechercher.
+   * @param $keywords Le mot clé
+   * @return array Un tableau regroupant les images retrouvé
+   */
+  abstract public function search($keywords);
+
+  /**
+   * Méthode retournant les suggestions d'image d'un mot clé rechercher.
+   * @param $keywords Le mot clé
+   * @return array Un tableau regroupant les suggestion par entité
+   */
+  abstract public function suggestion($keywords);
+  
+  /**
    * Méthode retournant les images d'un utilisateur.
    * @param $user int L'identifiant de l'utilisateur possesseur des images à récupérer
    * @return array la liste des images. Chaque entrée est une instance de Picture.

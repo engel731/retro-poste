@@ -4,7 +4,8 @@
     <route method="GET" url="/services/picture/([0-9]+)" ressources="Picture" function="Show" vars="idPicture"></route>
     <route method="GET" url="/services/user/([0-9]+)/picture" ressources="Picture" function="UserShow" vars="idUser"></route>
     <route method="GET" url="/services/album/([0-9]+)/picture" ressources="Picture" function="AlbumShow" vars="idAlbum"></route>
-    
+    <route method="GET" url="/services/picture/suggestion=([%\w]*+)" ressources="Picture" function="Suggestion" vars="keywords"></route>
+
     <route method="GET" url="/services/user" ressources="User" function=""></route>
     <route method="GET" url="/services/user/([0-9]+)" ressources="User" function="Show" vars="idUser"></route>
 
