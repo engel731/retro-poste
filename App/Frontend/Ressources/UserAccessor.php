@@ -8,14 +8,15 @@ class UserAccessor extends Accessor
 {
   public function GET_User(HTTPRequest $request) {
     $manager = $this->managers->getManagerOf('Users');
-    $data = $manager->getList();
+    $dataResult = $manager->getList();
+    $data = $dataResult->list_object_to_array();
     
     if(empty($data)) {
       $this->app->httpResponse()->addHeader('HTTP/1.0 404 Not Found');
       return array("message" => "No users found.");
     }
     
-    return $data->list_object_to_array();
+    return $data;
   }
 
   public function GET_ShowUser(HTTPRequest $request) {

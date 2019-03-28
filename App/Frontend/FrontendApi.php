@@ -17,7 +17,7 @@ class FrontendApi extends Api {
         
         $controller = $this->getController();
         $data = $controller->execute();
-
+    
         $this->httpResponse->send(json_encode($data));
     }
 }
