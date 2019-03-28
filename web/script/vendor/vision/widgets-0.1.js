@@ -132,7 +132,8 @@ ModGalerie.prototype.load = function(data, position) {
 	currentRow.addThumb(thumb);
 
 	if(currentRow.size.width >= this.containerWidth) {
-		currentRow.justify(this.containerWidth-16);
+		//srollbar = 16 + margin = 3
+		currentRow.justify(this.containerWidth-19);
 		currentRow.reinit();
 	} else {
 		currentRow.justifyHeight();
@@ -149,7 +150,8 @@ ModGalerie.prototype.resizeToFit = function() {
 		currentRow.addThumb(thumb);
 
 		if(currentRow.size.width >= contenairWidth) {
-			currentRow.justify(contenairWidth);
+			//margin = 2
+			currentRow.justify(contenairWidth-3);
 			currentRow.reinit();
 		} else {
 			currentRow.justifyHeight();
@@ -168,7 +170,7 @@ function Thumb(elm, margin) {
 
 Thumb.prototype.resize = function(width, height) {
 	this.elm.style.width = width + 'px';
-	this.elm.style.height = height + 'px';
+	this.elm.style.height = height+ 'px';
 
 	this.currentSize.width = width;
 	this.currentSize.height = height;
@@ -181,7 +183,7 @@ Thumb.prototype.getSize = function() {
 	};
 };
 
-Thumb.prototype.setMargin = function(margin) { this.margin = (margin ? margin : 0); };
+Thumb.prototype.setMargin = function(margin) { this.margin = (margin ? margin : 5); };
 Thumb.prototype.setElm = function(elm) { this.elm = elm; };
 
 /* Row */

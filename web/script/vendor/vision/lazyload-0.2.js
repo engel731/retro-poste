@@ -39,9 +39,11 @@ function LazyLoad(container, Lazydata) {
 	};
 
 	// On verifie que le contenair soir visible pour commencer
-	this.contenair.isVisible(function() {
+	/*this.contenair.isVisible(function() {
 		if(self.isStart()) self.start();
-	});
+	});*/
+
+	if(self.isStart()) self.start();
 }
 
 LazyLoad.prototype.lastLoad = function() {

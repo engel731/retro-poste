@@ -13,8 +13,8 @@ function LazyData(data) {
 }
 
 LazyData.prototype.isVisible = function(callback) {
-	var thumbContenair = this.elm.parentNode.parentNode.parentNode.parentNode;
-
+	//var thumbContenair = this.elm.parentNode.parentNode.parentNode.parentNode;
+	
 	window.addEventListener('load', Throttling.call(this, 'lookAtContainer'));
 	window.addEventListener('scroll', Throttling.call(this, 'lookAtContainer'));
 
@@ -22,7 +22,7 @@ LazyData.prototype.isVisible = function(callback) {
 }
 
 LazyData.prototype.lookAtContainer = function(fx, event) {
-	var thumbContenair = this.elm.parentNode.parentNode.parentNode.parentNode;
+	//var thumbContenair = this.elm.parentNode.parentNode.parentNode.parentNode;
 
 	if(this.elm.getBoundingClientRect().top <= window.innerHeight
 	&& this.elm.getBoundingClientRect().bottom >= 0) {
