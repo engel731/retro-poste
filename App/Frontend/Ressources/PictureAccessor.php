@@ -6,6 +6,44 @@ use \OCFram\HTTPRequest;
 
 class PictureAccessor extends Accessor
 {
+  /**
+   * Méthode retournant une liste d'image recherché.
+   * @param $keywords string La recherche
+   * @return array La liste des images.
+   */
+  public function GET_SearchPicture(HTTPRequest $request) {
+    $keywords = str_replace('%20', ' ', $request->getData('keywords'));
+    $manager = $this->managers->getManagerOf('Pictures');
+    
+    $dataResult = $manager->search($keywords);
+    $data = $dataResult->list_object_to_array();
+    
+    // Si aucune carte postale
+    if(empty($data)) {
+      $this->app->httpResponse()->addHeader('HTTP/1.0 404 Not Found');
+      return array("message" => "No pictures found.");
+    }
+    
+    return $data;
+  }
+
+
+
+  /**
+   * Méthode retournant des suggestions de recherche.
+   * @param $keywords string La recherche
+   * @return array La liste des suggestions de recherche triée par l'entité
+   */
+  public function GET_SuggestionPicture(HTTPRequest $request) {
+    $keywords = str_replace('%20', ' ', $request->getData('keywords'));
+    $manager = $this->managers->getManagerOf('Pictures');
+    
+    return $manager->suggestion($keywords);
+  }
+
+
+
+  
   public function GET_Picture(HTTPRequest $request) {
     $manager = $this->managers->getManagerOf('Pictures');
     $data = $manager->getList();
@@ -19,6 +57,8 @@ class PictureAccessor extends Accessor
     return $data->list_object_to_array();
   }
 
+
+
   public function GET_ShowPicture(HTTPRequest $request) {
     $manager = $this->managers->getManagerOf('Pictures');
     $data = $manager->getUnique($request->getData('idPicture'));
@@ -31,6 +71,8 @@ class PictureAccessor extends Accessor
     
     return $data->object_to_array();
   }
+
+
 
   public function GET_UserShowPicture(HTTPRequest $request) {
     $managers = array(
@@ -58,6 +100,8 @@ class PictureAccessor extends Accessor
     return $data->list_object_to_array();
   }
 
+
+  
   public function GET_AlbumShowPicture(HTTPRequest $request) {
     $managers = array(
       'Pictures' => $this->managers->getManagerOf('Pictures'),
