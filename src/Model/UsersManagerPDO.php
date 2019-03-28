@@ -10,7 +10,7 @@ class UsersManagerPDO extends UsersManager
     // Lecture
 
     public function getUnique($id) {
-        $requete = $this->dao->prepare('SELECT * FROM r_users WHERE id = :id');
+        $requete = $this->dao->prepare('SELECT * FROM r_user WHERE id = :id');
         $requete->bindValue(':id', (int) $id, \PDO::PARAM_INT);
         $requete->execute();
     
@@ -26,7 +26,7 @@ class UsersManagerPDO extends UsersManager
     }
 
     public function getList($debut = -1, $limite = -1) {
-        $sql = 'SELECT * FROM r_users';
+        $sql = 'SELECT * FROM r_user';
  
         if ($debut != -1 || $limite != -1)
         {
@@ -51,11 +51,11 @@ class UsersManagerPDO extends UsersManager
     // Ecriture
     
     public function delete($id) {
-        $this->dao->exec('DELETE FROM r_users WHERE id = '.(int) $id);
+        $this->dao->exec('DELETE FROM r_user WHERE id = '.(int) $id);
     }
 
     protected function modify(User $user) {
-        $requete = $this->dao->prepare('UPDATE r_users SET login = :login, pass = :pass, mail = :mail WHERE id = :id');
+        $requete = $this->dao->prepare('UPDATE r_user SET login = :login, pass = :pass, mail = :mail WHERE id = :id');
  
         $requete->bindValue(':login', $user->login());
         $requete->bindValue(':pass', $user->pass());
@@ -66,7 +66,7 @@ class UsersManagerPDO extends UsersManager
     }
 
     protected function add(User $user) {
-        $requete = $this->dao->prepare('INSERT INTO r_users SET login = :login, pass = :pass, mail = :mail, creation-date = NOW()');
+        $requete = $this->dao->prepare('INSERT INTO r_user SET login = :login, pass = :pass, mail = :mail, creation_date = NOW()');
  
         $requete->bindValue(':login', $user->login());
         $requete->bindValue(':pass', $user->pass());

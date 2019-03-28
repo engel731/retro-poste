@@ -8,8 +8,8 @@ class Album extends Entity
   protected $id,
             $title,
             $resum,
-            $creationDate,
-            $changeDate;
+            $creation_date,
+            $change_date;
 
   const INVALID_TITLE = 1;
   const INVALID_RESUM = 2;
@@ -43,12 +43,12 @@ class Album extends Entity
  
   public function setCreationDate(\DateTime $creationDate)
   {
-    $this->creationDate = $creationDate;
+    $this->creation_date = $creationDate;
   }
 
   public function setChangeDate(\DateTime $dateEdit)
   {
-    $this->changeDate = $dateEdit;
+    $this->change_date = $dateEdit;
   }
  
   // GETTERS //
@@ -56,6 +56,6 @@ class Album extends Entity
   public function id() { return $this->id; }
   public function title() { return $this->title; }
   public function resum() { return $this->resum; }
-  public function creationDate() { return $this->creationDate; }
-  public function changeDate() { return $this->changeDate; }
+  public function creationDate() { return $this->creation_date; }
+  public function changeDate() { return $this->change_date; }
 }

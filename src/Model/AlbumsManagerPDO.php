@@ -57,7 +57,7 @@ class AlbumsManagerPDO extends AlbumsManager
   }
 
   protected function modify(Album $album) {
-    $requete = $this->dao->prepare('UPDATE r_album SET title = :title, resum = :resum, change-date = NOW() WHERE id = :id');
+    $requete = $this->dao->prepare('UPDATE r_album SET title = :title, resum = :resum, change_date = NOW() WHERE id = :id');
  
     $requete->bindValue(':title', $album->title());
     $requete->bindValue(':resum', $album->resum());
@@ -67,7 +67,7 @@ class AlbumsManagerPDO extends AlbumsManager
   }
 
   protected function add(Album $album) {
-    $requete = $this->dao->prepare('INSERT INTO r_album SET title = :title, resum = :resum, creation-date = NOW(), change-date = NOW()');
+    $requete = $this->dao->prepare('INSERT INTO r_album SET title = :title, resum = :resum, creation_date = NOW(), change_date = NOW()');
  
     $requete->bindValue(':title', $album->book());
     $requete->bindValue(':resum', $album->titre());

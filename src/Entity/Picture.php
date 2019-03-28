@@ -12,7 +12,7 @@ class Picture extends Entity
             $resum,
             $sha,
             $extension,
-            $creationDate;
+            $creation_date;
 
   const INVALID_TITLE = 1;
   const INVALID_RESUM = 2;
@@ -77,7 +77,7 @@ class Picture extends Entity
  
   public function setCreationDate(\DateTime $creationDate)
   {
-    $this->creationDate = $creationDate;
+    $this->creation_date = $creationDate;
   }
  
   // GETTERS //
@@ -89,5 +89,5 @@ class Picture extends Entity
   public function resum() { return $this->resum; }
   public function shaImg() { return $this->shaImg; }
   public function extImg() { return $this->extImg; }
-  public function creationDate() { return $this->creationDate; }
+  public function creationDate() { return $this->creation_date; }
 }

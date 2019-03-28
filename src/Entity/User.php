@@ -9,7 +9,7 @@ class User extends Entity
             $login,
             $pass,
             $mail,
-            $creationDate;
+            $creation_date;
 
   const INVALID_LOGIN = 1;
   const INVALID_PASS = 2;
@@ -54,7 +54,7 @@ class User extends Entity
  
   public function setCreationDate(\DateTime $creationDate)
   {
-    $this->creationDate = $creationDate;
+    $this->creation_date = $creationDate;
   }
  
   // GETTERS //
@@ -63,5 +63,5 @@ class User extends Entity
   public function login() { return $this->login; }
   public function pass() { return $this->pass; }
   public function mail() { return $this->mail; }
-  public function creationDate() { return $this->creationDate; }
+  public function creationDate() { return $this->creation_date; }
 }
